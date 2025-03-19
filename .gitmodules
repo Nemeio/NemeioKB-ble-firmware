@@ -1,0 +1,6 @@
+[submodule "pc-nrfutil"]
+	path = pc-nrfutil
+	url = https://bitbucket.org/adeneo-embedded/b1994-ldlc-pc-nrfutil.git
+[submodule "nRF5_SDK/external/micro-ecc/micro-ecc"]
+	path = nRF5_SDK/external/micro-ecc/micro-ecc
+	url = https://github.com/kmackay/micro-ecc.git

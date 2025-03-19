@@ -1,0 +1,11 @@
+# External code
+nRF5_SDK/.*
+secure_bootloader/.*
+SEGGER/.*
+LDLC_BLE_HID_Keyboard/src/Libraries/swo_log..*
+
+# Custom code for nRF5 SDK
+.*_custom.*
+
+# Generated code
+dfu_public_key.c

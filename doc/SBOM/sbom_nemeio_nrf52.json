@@ -1,0 +1,189 @@
+{
+  "components": [
+    {
+      "bom-ref": "Bluetooth Core@5.2",
+      "cpe": "cpe:2.3:a:bluetooth:bluetooth_core:5.2:*:*:*:le:*:*:*",
+      "name": "Bluetooth Core",
+      "version": "5.2"
+    },
+    {
+      "bom-ref": "Newlib nanolib@4.1.0",
+      "cpe": "cpe:2.3:a:newlib_project:newlib:4.1.0:*:*:*:*:*:*:*",
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://sourceware.org/git/?p=newlib-cygwin.git;a=commit;h=415fdd4279b85eeec9d54775ce13c5c412451e08"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "name": "Various MIT/BSD-like licenses"
+          }
+        }
+      ],
+      "name": "Newlib nanolib",
+      "version": "4.1.0"
+    },
+    {
+      "bom-ref": "nRF SDK@17.1.0",
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://www.nordicsemi.com/Products/Development-software/nrf5-sdk"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "name": "5-Clause Nordic License"
+          }
+        }
+      ],
+      "name": "nRF SDK",
+      "version": "17.1.0"
+    },
+    {
+      "bom-ref": "nRF SoftDevice S132@7.2.0",
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://www.nordicsemi.com/Products/Development-software/s132"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "name": "5-Clause Nordic License"
+          }
+        }
+      ],
+      "name": "nRF SoftDevice S132",
+      "version": "7.2.0"
+    },
+    {
+      "bom-ref": "nRF52832@a71f7956-0a7f-4efe-9a38-6f912ac772f4",
+      "cpe": "cpe:2.3:h:nordicsemi:nrf52832:-:*:*:*:*:*:*:*",
+      "name": "nRF52832",
+      "version": ""
+    },
+    {
+      "bom-ref": "mbed TLS@2.16.10",
+      "cpe": "cpe:2.3:a:arm:mbed_tls:2.16.10:-:*:*:*:*:*:*",
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://github.com/Mbed-TLS/mbedtls/tree/mbedtls-2.16.10"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "name": "mbed TLS",
+      "version": "2.16.10"
+    },
+    {
+      "bom-ref": "micro-ecc@1.1",
+      "cpe": "cpe:2.3:a:micro-ecc_project:micro-ecc:1.1:*:*:*:*:*:*:*",
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://github.com/kmackay/micro-ecc/releases/tag/v1.1"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD-2-Clause"
+          }
+        }
+      ],
+      "name": "micro-ecc",
+      "version": "1.1"
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "Bluetooth Core@5.2"
+    },
+    {
+      "ref": "Nemeio NRF52"
+    },
+    {
+      "ref": "Newlib nanolib@4.1.0"
+    },
+    {
+      "ref": "mbed TLS@2.16.10"
+    },
+    {
+      "ref": "micro-ecc@1.1"
+    },
+    {
+      "ref": "nRF SDK@17.1.0"
+    },
+    {
+      "ref": "nRF SoftDevice S132@7.2.0"
+    },
+    {
+      "ref": "nRF52832@a71f7956-0a7f-4efe-9a38-6f912ac772f4"
+    }
+  ],
+  "metadata": {
+    "component": {
+      "bom-ref": "Nemeio NRF52",
+      "name": "Nemeio NRF52",
+      "type": "library"
+    },
+    "timestamp": "2023-05-25T13:04:57.318053+00:00",
+    "tools": [
+      {
+        "externalReferences": [
+          {
+            "type": "build-system",
+            "url": "https://github.com/CycloneDX/cyclonedx-python-lib/actions"
+          },
+          {
+            "type": "distribution",
+            "url": "https://pypi.org/project/cyclonedx-python-lib/"
+          },
+          {
+            "type": "documentation",
+            "url": "https://cyclonedx.github.io/cyclonedx-python-lib/"
+          },
+          {
+            "type": "issue-tracker",
+            "url": "https://github.com/CycloneDX/cyclonedx-python-lib/issues"
+          },
+          {
+            "type": "license",
+            "url": "https://github.com/CycloneDX/cyclonedx-python-lib/blob/main/LICENSE"
+          },
+          {
+            "type": "release-notes",
+            "url": "https://github.com/CycloneDX/cyclonedx-python-lib/blob/main/CHANGELOG.md"
+          },
+          {
+            "type": "vcs",
+            "url": "https://github.com/CycloneDX/cyclonedx-python-lib"
+          },
+          {
+            "type": "website",
+            "url": "https://cyclonedx.org"
+          }
+        ],
+        "name": "cyclonedx-python-lib",
+        "vendor": "CycloneDX",
+        "version": "4.0.0"
+      }
+    ]
+  },
+  "serialNumber": "urn:uuid:4bbe873e-c14b-4851-97ea-a55179bd017f",
+  "version": 1,
+  "$schema": "http://cyclonedx.org/schema/bom-1.4.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.4"
+}

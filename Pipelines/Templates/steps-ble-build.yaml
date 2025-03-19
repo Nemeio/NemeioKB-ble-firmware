@@ -1,0 +1,47 @@
+### This template builds the firmware
+
+parameters:
+  - name: RepositoryPath
+    type: string
+    default: $(Build.SourcesDirectory)
+  - name: BuildArtifactName
+    type: string
+    default: Binaries
+  - name: SecureBoot
+    type: number
+    default: 0
+  - name: CEM_TESTS
+    type: number
+    default: 0
+  - name: ROLLBACK_TESTS
+    type: number
+    default: 0
+
+steps:
+  - task: DownloadSecureFile@1
+    displayName: "Download NRF Public Key from SecureFiles"
+    name: PopulatePublicKeyNrf_${{ parameters.BuildArtifactName }}
+    inputs:
+      secureFile: azure_nrf_pubkey.pem
+
+  - script: ${{ parameters.RepositoryPath }}/buildall.sh
+    env:
+      NEMEIO_AZURE_KEYVAULT_URL: $(AzureKeyVaultUrl)
+      NEMEIO_AZURE_KEYVAULT_NRF_KEYNAME: $(AzureKeyVaultNrfKeyName)
+      NEMEIO_AZURE_KEYVAULT_NRF_PUBKEY_PEM_PATH: $(PopulatePublicKeyNrf_${{ parameters.BuildArtifactName }}.secureFilePath)
+      AZURE_CLIENT_ID: $(nemeio-azure-keyvault-client-id)
+      AZURE_CLIENT_SECRET: $(nemeio-azure-keyvault-client-secret)
+      AZURE_TENANT_ID: $(nemeio-azure-keyvault-tenant-id)
+      CEM_TESTS: ${{ parameters.CEM_TESTS }}
+      ROLLBACK_TESTS: ${{ parameters.ROLLBACK_TESTS }}
+      ENABLE_SECURE_BOOT: ${{ parameters.SecureBoot }}
+    displayName: Build
+    target:
+      container: compilation
+
+  - bash: |
+      cp ${{ parameters.RepositoryPath }}/version.txt ${{ parameters.RepositoryPath }}/build_release/Binary/.
+  - bash: |
+      cp ${{ parameters.RepositoryPath }}/nRF5_SDK/components/softdevice/s132/hex/s132_nrf52_* ${{ parameters.RepositoryPath }}/build_release/Binary/manufacturing/.
+  - publish: ${{ parameters.RepositoryPath }}/build_release/Binary
+    artifact: ${{ parameters.BuildArtifactName }}

@@ -1,0 +1,95 @@
+### This document is the root of the pipeline B2047 - LDLC - Karmeliet - NRF
+### It builds the firmware and firmware CEM and runs the Sonar analysis
+### on any branch's push and on PR
+
+variables:
+  - group: Embedded_Sonar
+  - group: Key Vault
+  - group: Services
+
+trigger:
+  branches:
+    include:
+      - "*"
+pr:
+  autoCancel: true
+  branches:
+    include:
+      - "*"
+
+resources:
+  containers:
+    - container: compilation
+      endpoint: witekio-dockerhub-service-connection
+      image: witekio/mcu-toolchain-gnu-arm-embedded:24.01
+      options: --user root --entrypoint=""
+
+stages:
+  - stage: Firmware_Compilation
+    jobs:
+      - job: Compile_BLE_Firmware
+        pool:
+          name: "B2047-LDLC-Karmeliet-vmss-ubuntu2004"
+        steps:
+          - checkout: self
+            submodules: recursive
+            clean: true
+            fetchDepth: 1
+          - template: Templates/steps-ble-build.yaml
+            parameters:
+              BuildArtifactName: "Binaries_dev"
+
+  - stage: Firmware_Compilation_Production
+    jobs:
+      - job: Compile_BLE_Firmware_Production
+        pool:
+          name: "B2047-LDLC-Karmeliet-vmss-ubuntu2004"
+        steps:
+          - checkout: self
+            submodules: recursive
+            clean: true
+            fetchDepth: 1
+          - template: Templates/steps-ble-build.yaml
+            parameters:
+              BuildArtifactName: "Binaries_prod"
+              SecureBoot: 1
+
+  - stage: Firmware_Cem_Compilation
+    jobs:
+      - job: Compile_BLE_CEM_Firmware
+        pool:
+          name: "B2047-LDLC-Karmeliet-vmss-ubuntu2004"
+        steps:
+          - checkout: self
+            submodules: recursive
+            clean: true
+            fetchDepth: 1
+          - template: Templates/steps-ble-build.yaml
+            parameters:
+              BuildArtifactName: "Binaries_cem"
+              CEM_TESTS: 1
+
+  - stage: Firmware_Rollback_Test_Compilation
+    jobs:
+      - job: Compile_BLE_Rollback_Test_Firmware
+        pool:
+          name: "B2047-LDLC-Karmeliet-vmss-ubuntu2004"
+        steps:
+          - checkout: self
+            submodules: recursive
+            clean: true
+            fetchDepth: 1
+          - template: Templates/steps-ble-build.yaml
+            parameters:
+              BuildArtifactName: "Binaries_rollback_test"
+              ROLLBACK_TESTS: 1
+
+  - stage: Firmware_Analysis
+    condition: or(eq(variables['Build.SourceBranchName'], 'develop'), eq(variables['Build.Reason'], 'PullRequest'))
+    jobs:
+      - job: Analyzing_BLE_Firmware
+        pool:
+          name: "B2047-LDLC-Karmeliet-vmss-ubuntu2004"
+        steps:
+          - checkout: self
+          - template: Templates/steps-ble-sonar.yaml

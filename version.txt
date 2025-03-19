@@ -1,0 +1,12 @@
+# When changing major number, you need to remove *BUILD_NUMBER lines
+
+# App
+APP_MAJOR_NUMBER=50
+APP_BUILD_NUMBER=10
+
+# Bootloader
+BL_MAJOR_NUMBER=55
+BL_BUILD_NUMBER=10
+
+# Soft device
+SD_VERSION=7.2.0

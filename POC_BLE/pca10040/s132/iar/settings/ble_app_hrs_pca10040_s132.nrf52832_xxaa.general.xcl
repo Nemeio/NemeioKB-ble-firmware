@@ -1,0 +1,13 @@
+"C:\Program Files\IAR Systems\Embedded Workbench 7.4\arm\bin\armproc.dll" 
+
+"C:\Program Files\IAR Systems\Embedded Workbench 7.4\arm\bin\armjlink2.dll" 
+
+"C:\_Clients\b1994-ldlc-karmeliet-firmware\nRF52\POC_BLE\pca10040\s132\iar\_build\ble_app_hrs_pca10040_s132.out" 
+
+--plugin "C:\Program Files\IAR Systems\Embedded Workbench 7.4\arm\bin\armbat.dll" 
+
+--flash_loader "C:\Program Files\IAR Systems\Embedded Workbench 7.4\arm\config\flashloader\NordicSemiconductor\nrf52xxx_xxaa.board" 
+
+
+
+

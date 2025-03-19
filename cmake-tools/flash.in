@@ -1,0 +1,7 @@
+exitonerror 1
+h
+r
+erase
+r
+loadfile ${HEX_FILE}
+qc

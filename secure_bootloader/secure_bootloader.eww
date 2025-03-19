@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<workspace>  <project>
+    <path>$WS_DIR$\karmeliet_spi\iar\secure_bootloader_spi_karmeliet.ewp</path>
+  </project>  <project>
+    <path>$WS_DIR$\karmeliet_spi_debug\iar\secure_bootloader_spi_karmeliet_debug.ewp</path>
+  </project>  <batchBuild/>
+</workspace>

@@ -1,0 +1,1 @@
+Put nRF52 SDK in nRF52_SDK folder.
